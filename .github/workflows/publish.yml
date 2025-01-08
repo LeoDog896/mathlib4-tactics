@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  schedule: [{cron: "0 0 * * *"}]
+  push:
+    branches: ["main"] # replace "main" with the default branch
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - run: deno -A fetch.ts
+      - uses: stefanzweifel/git-auto-commit-action@v4
