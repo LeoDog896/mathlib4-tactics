@@ -4,6 +4,8 @@ import Mathlib.Tactic
 
 open Lean Meta Elab Tactic Command
 
+def main : IO Unit := IO.println ""
+
 -- Avoids using Batteries.Tactic.OpenPrivate. Copied from Batteries/Tactic/HelpCmd.lean
 def elabHelpCatCustom (more : Option Syntax) (catStx : Ident) (id : Option String) :
     CommandElabM Unit := do
