@@ -59,7 +59,7 @@ def elabHelpCatCustom (more : Option Syntax) (catStx : Ident) (id : Option Strin
     for k in ks do
       let identifierPoint := mkConst k
       let searchBase := "https://leanprover-community.github.io/mathlib4_docs/search.html?q="
-      msg ← addMsg k msg m!"# {repr name} ({identifierPoint})[{searchBase}{identifierPoint}]\n"
+      msg ← addMsg k msg m!"# {repr name} [{identifierPoint}]({searchBase}{identifierPoint})\n"
   for (_, k) in rest do
     msg ← addMsg k msg m!"# [{mkConst k}]\n"
   logInfo msg
